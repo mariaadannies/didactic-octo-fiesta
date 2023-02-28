@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% block meta %}
+	<title>Update Task</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/create_task.css' %}">
+	{% endblock meta %}
+</head>
+
+<body>
+	{% block content %}
+	<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <a class="navbar-brand" href="{% url 'home:show_homepage' %}">PostTwit </a>
+
+        <div class="container-fluid">
+            <h5 class="navbar-brand">Update Post</h5>
+            <div class="nav navbar-nav navbar-right">
+                <a class="nav-item nav-link active" href="{% url 'home:logged_in' %}">Back</a>
+                <a class="nav-item nav-link" href="{% url 'home:logout' %}">Logout</a>
+            </div>
+        </div>
+        <a class="nav-item nav-link active text-white" href="{% url 'home:profile' %}">Welcome back, {{ username }} 👋 </a>
+
+    </nav>
+	
+	<br>
+
+	<div class="d-flex align-items-center justify-content-center">
+		<form method="POST" action="">
+			{% csrf_token %}
+			{{form}}
+			<input class="btn btn-primary" type="submit" value="Update" name="Update">
+		</form>
+	</div>
+	{% endblock content %}
+</body>
+</html>
